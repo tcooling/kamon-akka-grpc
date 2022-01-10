@@ -18,7 +18,7 @@ package kamon.testkit
 
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
-import akka.stream.ActorMaterializer
+import akka.stream.Materializer
 import example.myapp.helloworld.grpc.GreeterServicePowerApiHandler
 
 import scala.concurrent.{ExecutionContext, Future}
@@ -27,12 +27,12 @@ trait TestWebServer {
   def startServer(interface: String, port: Int)(implicit system: ActorSystem): WebServer = {
 
     implicit val ec: ExecutionContext = system.dispatcher
-    implicit val materializer = ActorMaterializer()
+    implicit val materializer = Materializer(system)
 
     val greeterService = GreeterServicePowerApiHandler(
       new GreeterServiceImpl()
     )
-    new WebServer(interface, port, "http", Http().bindAndHandleAsync(greeterService, interface, port))
+    new WebServer(interface, port, "http", Http().bindAndHandleAsync(greeterService, interface, port))//.bind(greeterService))
   }
 
   class WebServer(val interface: String, val port: Int, val protocol: String, bindingFuture: Future[Http.ServerBinding])(implicit ec: ExecutionContext) {

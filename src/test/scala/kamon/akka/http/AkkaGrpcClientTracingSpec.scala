@@ -18,9 +18,10 @@ package kamon.akka.http
 
 import akka.actor.ActorSystem
 import akka.grpc.GrpcClientSettings
-import akka.stream.ActorMaterializer
+import akka.stream.Materializer
 import akka.stream.scaladsl.{Sink, Source}
 import example.myapp.helloworld.grpc.{GreeterServiceClient, HeadersRequest, HelloRequest}
+import kamon.Kamon
 import kamon.tag.Lookups.plain
 import kamon.testkit._
 import org.scalatest.concurrent.{Eventually, ScalaFutures}
@@ -34,7 +35,7 @@ class AkkaGrpcClientTracingSpec extends WordSpecLike with Matchers with BeforeAn
 
   implicit private val system = ActorSystem("http-client-instrumentation-spec")
   implicit private val executor = system.dispatcher
-  implicit private val materializer = ActorMaterializer()
+  implicit private val materializer = Materializer(system)
 
   val timeoutTest: FiniteDuration = 5 second
   val interface = "127.0.0.1"
@@ -168,6 +169,9 @@ class AkkaGrpcClientTracingSpec extends WordSpecLike with Matchers with BeforeAn
 
       eventually(timeout(10 seconds)) {
         val httpResponse = response.value.value.get
+
+        // TODO
+        Kamon.currentContext() shouldBe 123
 
         httpResponse.headers.keys.toList should contain allOf(
           "x-foo",

@@ -25,17 +25,17 @@ val organizationSettings = Seq(
 
 
 
-val kamonCore           = "io.kamon" %% "kamon-core"                    % "2.0.0"
-val kamonTestKit        = "io.kamon" %% "kamon-testkit"                 % "2.0.2"
-val kamonCommon         = "io.kamon" %% "kamon-instrumentation-common"  % "2.0.0"
-val kamonAkkaHttp       = "io.kamon" %% "kamon-akka-http"               % "2.0.0"
+val kamonCore           = "io.kamon" %% "kamon-core"                    % "2.4.2"
+val kamonTestKit        = "io.kamon" %% "kamon-testkit"                 % "2.4.2"
+val kamonCommon         = "io.kamon" %% "kamon-instrumentation-common"  % "2.4.2"
+val kamonAkkaHttp       = "io.kamon" %% "kamon-akka-http"               % "2.4.2"
 val kanelaAgent         = "io.kamon" %  "kanela-agent"                  % "1.0.1"
 
-val http25              = "com.typesafe.akka" %% "akka-http"            % "10.1.10"
-val http2Support        = "com.typesafe.akka" %% "akka-http2-support"   % "10.1.10"
+val http25              = "com.typesafe.akka" %% "akka-http"            % "10.2.7"
+val http2Support        = "com.typesafe.akka" %% "akka-http2-support"   % "10.2.7"
 val stream25            = "com.typesafe.akka" %% "akka-stream"          % "2.5.24"
-val akkaGrpcRuntime     = "com.lightbend.akka.grpc" %% "akka-grpc-runtime" % "1.0.2"
-val grpcStub           = "io.grpc" % "grpc-stub" % "1.24.0" 
+val akkaGrpcRuntime     = "com.lightbend.akka.grpc" %% "akka-grpc-runtime" % "2.1.2"
+val grpcStub           = "io.grpc" % "grpc-stub" % "1.24.0"
 
 
 lazy val root = (project in file("."))
