@@ -29,13 +29,13 @@ val kamonCore           = "io.kamon" %% "kamon-core"                    % "2.4.2
 val kamonTestKit        = "io.kamon" %% "kamon-testkit"                 % "2.4.2"
 val kamonCommon         = "io.kamon" %% "kamon-instrumentation-common"  % "2.4.2"
 val kamonAkkaHttp       = "io.kamon" %% "kamon-akka-http"               % "2.4.2"
-val kanelaAgent         = "io.kamon" %  "kanela-agent"                  % "1.0.1"
+val kanelaAgent         = "io.kamon" %  "kanela-agent"                  % "1.0.14"
 
 val http25              = "com.typesafe.akka" %% "akka-http"            % "10.2.7"
 val http2Support        = "com.typesafe.akka" %% "akka-http2-support"   % "10.2.7"
-val stream25            = "com.typesafe.akka" %% "akka-stream"          % "2.5.24"
+val stream25            = "com.typesafe.akka" %% "akka-stream"          % "2.6.9"
 val akkaGrpcRuntime     = "com.lightbend.akka.grpc" %% "akka-grpc-runtime" % "2.1.2"
-val grpcStub           = "io.grpc" % "grpc-stub" % "1.24.0"
+val grpcStub           = "io.grpc" % "grpc-stub" % "1.43.2"
 
 
 lazy val root = (project in file("."))

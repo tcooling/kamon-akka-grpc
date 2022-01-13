@@ -32,7 +32,7 @@ trait TestWebServer {
     val greeterService = GreeterServicePowerApiHandler(
       new GreeterServiceImpl()
     )
-    new WebServer(interface, port, "http", Http().bindAndHandleAsync(greeterService, interface, port))//.bind(greeterService))
+    new WebServer(interface, port, "http", Http().newServerAt(interface, port).bind(greeterService))
   }
 
   class WebServer(val interface: String, val port: Int, val protocol: String, bindingFuture: Future[Http.ServerBinding])(implicit ec: ExecutionContext) {

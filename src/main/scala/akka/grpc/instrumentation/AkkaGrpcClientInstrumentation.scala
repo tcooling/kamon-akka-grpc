@@ -50,7 +50,7 @@ object AkkaGrpcClientInstrumentation {
 
   Kamon.onReconfigure(_ => rebuildHttpClientInstrumentation(): Unit)
 
-  @volatile private[grpc] var _httpClientInstrumentation: HttpClientInstrumentation = rebuildHttpClientInstrumentation
+  @volatile private[grpc] var _httpClientInstrumentation: HttpClientInstrumentation = rebuildHttpClientInstrumentation()
 
   private[grpc] def rebuildHttpClientInstrumentation(): HttpClientInstrumentation = {
     val httpClientConfig = Kamon.config().getConfig("kamon.instrumentation.akka.grpc.client")
